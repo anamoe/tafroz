@@ -179,6 +179,15 @@
     h6{
       color: green;
     }
+    .row.s{
+      padding-left: 50px;
+      padding-right: 50px;
+    }
+    @media (max-width: 600px) {
+  .row.s {
+    padding: 20px;
+  }
+}
   </style>
 </head>
 
@@ -224,7 +233,7 @@
   <section id="about" class="about">
     <div class="container">
 
-      <div class="row p-3">
+      <div class="row s">
 
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <div class="content pt-4 pt-lg-0">
@@ -274,16 +283,14 @@
     </div>
   </section>
 
-
-
-
   <section id="about" class="about">
     <div class="container">
-      <div class="row p-3">
+      <div class="row s">
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <div class="content pt-4 pt-lg-0">
 
-            <h3>
+           <center>
+           <h3>
               <p><span class="font-weight-bold" style="color: black;">Apakah anda mengalami </span>
               </p>
             </h3>
@@ -294,6 +301,7 @@
 
               </p>
             </h3>
+           </center>
           </div>
 
           <div class="container">
@@ -379,7 +387,7 @@
         <h3 style="color: green;font-weight:bold">DIABETES</h3>
 
 
-        <div class="row">
+        <div class="row s">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="news-item">
               <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
@@ -431,7 +439,7 @@
 
   <section id="about" class="about">
     <div class="container">
-      <div class="row p-3">
+      <div class="row s">
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <div class="content pt-4 pt-lg-0">
             <h4>
