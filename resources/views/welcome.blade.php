@@ -36,23 +36,21 @@
       width: 100%;
       overflow-x: hidden;
     }
-
-
-
     .news .news-item {
       background: green;
       box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
       padding: 20px;
-      border-radius: 10px;
       transition: all 0.3s;
       text-align: center;
+      border-radius: 10px;
     }
 
     .news .news-item img {
-      max-width: 60%;
-      max-height: 60%;
+      max-width: 100%;
+      max-height: 100%;
       border-radius: 10px;
-      margin-bottom: 15px;
+      display: block;
+      margin: 0;
     }
 
     .news .news-item .title {
@@ -75,22 +73,7 @@
       color: green;
     }
 
-    .swiper-pagination {
-      bottom: 10px !important;
-    }
 
-    .news .btn {
-      background-color: green;
-      border: none;
-      color: #fff;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-    }
-
-    .news .btn:hover {
-      background-color: darkgreen;
-    }
 
     .card {
       border-radius: 10px;
@@ -106,63 +89,8 @@
       /* Menambahkan bayangan lembut */
     }
 
-    .card-img-top {
-      border-top-left-radius: 15px;
-      /* Membuat ujung atas gambar card menjadi lebih bulat */
-      border-top-right-radius: 15px;
-    }
 
-    .footer {
-      background-color: green;
-      /* Warna hijau */
-      color: white;
-      padding: 20px;
-    }
 
-    .contact-info p {
-      margin: 5px 0;
-    }
-
-    .map iframe {
-      width: 100%;
-      height: 200px;
-      /* Menyesuaikan tinggi peta */
-      border: none;
-    }
-
-    .card-custom {
-      background-color: white;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    .card-custom .icon {
-      margin-left: 5px;
-    }
-
-    .card-custom.active .dropdown-content {
-      display: block;
-    }
-
-    .dropdown-content {
-      display: none;
-      /* position: absolute; */
-      background-color: white;
-      width: 100%;
-      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-      z-index: 1;
-      padding: 15px;
-      /* Sesuaikan padding dengan kebutuhan */
-      border-radius: 10px;
-    }
-
-    .dropdown-content p {
-      color: green;
-      margin: 0;
-      /* Hapus margin default agar tidak ada spasi di sekitar teks */
-    }
 
     .btn-custom {
       border-radius: 10px;
@@ -187,14 +115,19 @@
     }
 
     .row.s {
-      padding-left: 50px;
-      padding-right: 50px;
+      padding-left: 30px;
+      padding-right: 30px;
+      padding-top: 30px;
     }
 
     @media (max-width: 600px) {
       .row.s {
         padding: 0px;
         margin-top: -40px;
+      }
+
+      .diabetes {
+        margin-bottom: 40px;
       }
     }
 
@@ -211,52 +144,13 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <!-- <header id="header" class="fixed-top d-flex align-items-center">
-    <div class="container d-flex align-items-center">
-
-    <div class="containers d-flex align-items-center">
-
-    <div class="logo me-auto">
-        <img src="{{url('public/logo')}}/LOGO YAFO aja.png" alt="">
-        <a href="#" style="color: green;">
-          YAFO AGRO INDONESIA</a>
-
-      </div>
-
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#">Beranda</a></li>
-          <li><a class="nav-link scrollto" href="{{url('landingpage-profil')}}">Profil</a></li>
-          <li><a class="nav-link scrollto" href="{{url('detail-berita')}}">Berita dan Artikel</a></li>
-
-        </ul>
-
-      </nav>
-
-      <div class="header-social-links d-flex align-items-center">
-        <a href="{{url('login')}}">
-          <button class="btn btn-success" style="background-color: #FDBB26;color:green">MASUK</button>
-        </a>
-      </div>
-    </div>
-    
-      <i class="bi bi-list mobile-nav-toggle"></i>
-
-    </div>
-  </header> -->
-
-
-
   <section id="about" class="about">
     <div class="container">
 
       <div class="row s">
-
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <div class="content pt-4 pt-lg-0">
-            <img src="{{url('public/icon')}}/logo.png" alt="" height="100px" width="60px">
-
+            <img src="{{url('public/icon')}}/logo.png" alt="" height="80px" width="60px">
             <h3>
               <p><span class="font-weight-bold" style="color: black;">MAKANAN </span>
                 <span class="font-weight-bold" style="color: green;">SEHAT</span>
@@ -272,29 +166,24 @@
             <p class="fst-italic">
             <h4 style="color: green; text-align:justify;font-family: 'Times New Roman', Times, serif;font-size:large ">
 
-
               <p>
                 Tafroz organic & healthy makanan sehat yang mampu
                 menjaga tubuh dari berbagai penyakit dan praktis.
                 Adanya peluang yang besar dalam usaha ini,
                 kemudian menjadikan berbisnis frozen food healthy
                 akan membuat peluang pasar yang besar.
-
               </p>
             </h4>
-
-
             </p>
-
           </div>
           <br>
+
           <button class="btn-custom ">Kenapa harus Tafroz ? </button>
           <br>
         </div>
-        <div class="col-lg-6 rounded">
+        <div class="col-lg-6 rounded" style="margin-top: -100px;">
           <center>
-            <img src="{{url('public/icon')}}/3.png" alt="" width="90%" height="100%">
-
+            <img src="{{url('public/icon')}}/3.png" alt="" width="120%" height="100%">
           </center>
         </div>
       </div>
@@ -308,15 +197,10 @@
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <center>
             <img src="{{url('public/icon')}}/2.png" alt="" width="70%" height="100%">
-
           </center>
-
         </div>
-
         <div class="col-lg-6 rounded">
-
           <div class="content pt-4 pt-lg-0">
-
             <center>
               <h3>
                 <p><span class="font-weight-bold" style="color: black;">Apakah anda mengalami </span>
@@ -334,7 +218,7 @@
 
           <div class="container">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-12 mb-2">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1" style="">
@@ -348,7 +232,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 mb-2">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1">
@@ -363,7 +247,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 mb-2">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1">
@@ -378,7 +262,7 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 mb-2">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1">
@@ -403,21 +287,20 @@
 
   <!-- ======= News Section ======= -->
   <section id="news" class="news">
-    <div class="container mt-4">
+    <div class="container">
       <div class="section-title">
-        <h2 style="color: black;font-weight:bold">FAKTA TENTANG</h2>
-        <h3 style="color: green;font-weight:bold">DIABETES</h3>
+        <div class="diabetes">
+          <h2 style="color: black;font-weight:bold">FAKTA TENTANG</h2>
+          <h3 style="color: green;font-weight:bold">DIABETES</h3>
+        </div>
 
         <div class="row s">
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-4 mb-2">
             <div class="news-item">
-              <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
-
-
+              <img src="{{url('public/icon')}}/7.png" class="img-fluid" alt="">
             </div>
             <h6 class="title" style="color: green;">
               Bukan Hanya Terjadi pada Orang Tua
-
             </h6>
             <p class="" style="color: green;">
               Salah satu anggapan yang umum adalah bahwa diabetes hanya terjadi pada orang tua atau mereka yang berusia lanjut.
@@ -425,11 +308,9 @@
 
             </p>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-4 mb-2">
             <div class="news-item">
-              <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
-
-
+              <img src="{{url('public/icon')}}/6.png" class="img-fluid" alt="">
             </div>
             <h6 class="title" style="color: green;">
               Diabetes Tipe 1 Bukan Disebabkan oleh Pola Makan atau Gaya Hidup
@@ -441,9 +322,9 @@
               bukan semata-mata karena faktor perilaku atau pola makan.
             </p>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4">
+          <div class="col-lg-4 col-md-4 mb-2">
             <div class="news-item">
-              <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
+              <img src="{{url('public/icon')}}/8.png" class="img-fluid" alt="">
 
             </div>
             <h6 class="title" style="color: green;"> Memengaruhi Berbagai Organ Tubuh</h6>
@@ -571,46 +452,7 @@
 
     </div>
   </section>
-  <!-- ======= Footer ======= -->
-  <!-- <footer class="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="contact-info">
-          <p><i class="bi bi-envelope"></i> </p>
-          
-            <p><i class="bi bi-map"></i> </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="contact-info">
-            <p>IKUTI KAMI</p>
-            <p>
-              <a href="https://www.tiktok.com/@yafoagro_indonesia" style="color: blue;">
-                <i class="bi bi-tiktok"></i> @yafoagro_indonesia</a>
-            </p>
-            <p>
-            <a href="https://www.instagram.com/yafoagroindonesia" style="color: blue;">
-            <i class="bi bi-instagram"></i> @yafoagroindonesia</a>
-            </p>
-            <p>
-            <a href="https://yafoagro.com/" style="color: blue;">
-            <i class="bi bi-globe"></i> yafoagro.com</a>
-            </p>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="map">
-            <h5 style="font-weight: bold;">
-            Lokasi
 
-            </h5>
-         
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer> -->
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
