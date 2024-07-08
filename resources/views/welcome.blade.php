@@ -287,12 +287,13 @@
             </p>
 
           </div>
+          <br>
           <button class="btn-custom ">Kenapa harus Tafroz ? </button>
           <br>
         </div>
         <div class="col-lg-6 rounded">
           <center>
-            <img src="{{url('public/icon')}}/3.png" alt="" width="70%" height="100%">
+            <img src="{{url('public/icon')}}/3.png" alt="" width="90%" height="100%">
 
           </center>
         </div>
