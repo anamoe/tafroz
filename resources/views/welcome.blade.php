@@ -61,6 +61,11 @@
       margin: 0;
     }
 
+    .title {
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
     .news .news-item .title a {
       color: #333;
       text-decoration: none;
@@ -176,18 +181,31 @@
       color: white;
       /* Mengubah warna teks saat dihover */
     }
-    h6{
+
+    h6 {
       color: green;
     }
-    .row.s{
+
+    .row.s {
       padding-left: 50px;
       padding-right: 50px;
     }
+
     @media (max-width: 600px) {
-  .row.s {
-    padding: 20px;
-  }
-}
+      .row.s {
+        padding: 0px;
+        margin-top: -40px;
+      }
+    }
+
+    .ikon {
+      background-color: green;
+      border-radius: 20px;
+      display: inline-block;
+      width: 35px;
+      height: 35px;
+      padding: 0;
+    }
   </style>
 </head>
 
@@ -287,21 +305,30 @@
     <div class="container">
       <div class="row s">
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
+          <center>
+            <img src="{{url('public/icon')}}/2.png" alt="" width="70%" height="100%">
+
+          </center>
+
+        </div>
+
+        <div class="col-lg-6 rounded">
+
           <div class="content pt-4 pt-lg-0">
 
-           <center>
-           <h3>
-              <p><span class="font-weight-bold" style="color: black;">Apakah anda mengalami </span>
-              </p>
-            </h3>
-            <h3>
-              <p>
-                <span class="font-weight-bold" style="color: green;">MASALAH</span>
-                <span class="font-weight-bold" style="color: black;">ini ?</span>
+            <center>
+              <h3>
+                <p><span class="font-weight-bold" style="color: black;">Apakah anda mengalami </span>
+                </p>
+              </h3>
+              <h3>
+                <p>
+                  <span class="font-weight-bold" style="color: green;">MASALAH</span>
+                  <span class="font-weight-bold" style="color: black;">ini ?</span>
 
-              </p>
-            </h3>
-           </center>
+                </p>
+              </h3>
+            </center>
           </div>
 
           <div class="container">
@@ -309,8 +336,8 @@
               <div class="col-md-12">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
-                    <div class="p-1">
-                      <img src="{{url('public/icon')}}/logo.png" alt="Icon 1" height="40px" width="30px">
+                    <div class="ikon p-1" style="">
+                      <img src="{{url('public/icon')}}/Vector (3).png" alt="Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
@@ -323,12 +350,13 @@
               <div class="col-md-12">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
-                    <div class="p-1">
-                      <img src="{{url('public/icon')}}/logo.png" alt="Icon 1" height="40px" width="30px">
+                    <div class="ikon p-1">
+                      <img src="{{url('public/icon')}}/Vector (4).png" alt="Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
-                        Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                        Sering merasa haus padahal sudah minum cukup air ?
+
                       </h6>
                     </div>
                   </div>
@@ -337,12 +365,13 @@
               <div class="col-md-12">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
-                    <div class="p-1">
-                      <img src="{{url('public/icon')}}/logo.png" alt="Icon 1" height="40px" width="30px">
+                    <div class="ikon p-1">
+                      <img src="{{url('public/icon')}}/Vector (5).png" alt="Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
-                        Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                        Berat badan turun tanpa sebab yang jelas?
+
                       </h6>
                     </div>
                   </div>
@@ -351,12 +380,12 @@
               <div class="col-md-12">
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
-                    <div class="p-1">
-                      <img src="{{url('public/icon')}}/logo.png" alt="Icon 1" height="40px" width="30px">
+                    <div class="ikon p-1">
+                      <img src="{{url('public/icon')}}/Vector (6).png" alt="Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
-                        Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                        Luka lama atau sulit sembuh?
                       </h6>
                     </div>
                   </div>
@@ -365,14 +394,6 @@
 
             </div>
           </div>
-
-        </div>
-
-        <div class="col-lg-6 rounded">
-          <center>
-            <img src="{{url('public/icon')}}/2.png" alt="" width="70%" height="100%">
-
-          </center>
         </div>
       </div>
 
@@ -386,48 +407,52 @@
         <h2 style="color: black;font-weight:bold">FAKTA TENTANG</h2>
         <h3 style="color: green;font-weight:bold">DIABETES</h3>
 
-
         <div class="row s">
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="news-item">
               <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
-              <h4 class="title" style="color: green;"> KRIPIK TALAS</h4>
+
 
             </div>
+            <h6 class="title" style="color: green;">
+              Bukan Hanya Terjadi pada Orang Tua
+
+            </h6>
             <p class="" style="color: green;">
-              Tafroz organic & healthy makanan sehat yang mampu
-              menjaga tubuh dari berbagai penyakit dan praktis.
-              Adanya peluang yang besar dalam usaha ini,
-              kemudian menjadikan berbisnis frozen food healthy
-              akan membuat peluang pasar yang besar
+              Salah satu anggapan yang umum adalah bahwa diabetes hanya terjadi pada orang tua atau mereka yang berusia lanjut.
+              Namun, kenyataannya, penyakit ini dapat terjadi pada siapa pun, termasuk anak-anak dan remaja.
+
             </p>
           </div>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="news-item">
               <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
-              <h4 class="title" style="color: green;"> MINUMAN</h4>
+
 
             </div>
+            <h6 class="title" style="color: green;">
+              Diabetes Tipe 1 Bukan Disebabkan oleh Pola Makan atau Gaya Hidup
+            </h6>
             <p class="" style="color: green;">
-              Tafroz organic & healthy makanan sehat yang mampu
-              menjaga tubuh dari berbagai penyakit dan praktis.
-              Adanya peluang yang besar dalam usaha ini,
-              kemudian menjadikan berbisnis frozen food healthy
-              akan membuat peluang pasar yang besar
+              Diabetes tipe 1 terjadi ketika sistem kekebalan tubuh secara keliru menyerang dan menghancurkan
+              sel-sel pankreas yang memproduksi insulin. Hal ini karena faktor genetik dan imunologi berperan dalam perkembangan
+              penyakit ini,
+              bukan semata-mata karena faktor perilaku atau pola makan.
             </p>
           </div>
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="news-item">
               <img src="{{url('public/icon')}}/4.png" class="img-fluid" alt="">
-              <h4 class="title" style="color: green;"> TEPUNG TALAS</h4>
 
             </div>
+            <h6 class="title" style="color: green;"> Memengaruhi Berbagai Organ Tubuh</h6>
+
             <p class="" style="color: green;">
-              Tafroz organic & healthy makanan sehat yang mampu
-              menjaga tubuh dari berbagai penyakit dan praktis.
-              Adanya peluang yang besar dalam usaha ini,
-              kemudian menjadikan berbisnis frozen food healthy
-              akan membuat peluang pasar yang besar
+
+              Penyakit ini bisa menyebabkan kerusakan pada mata (retinopati diabetik), ginjal (nefropati diabetik),
+              saraf (neuropati diabetik), dan jantung (penyakit jantung koroner). Karenanya,
+              penting bagi penderita untuk menjaga pengelolaan yang baik dan rutin mengunjungi dokter untuk memantau kondisi mereka.
+
             </p>
           </div>
 
@@ -454,17 +479,17 @@
 
               </p>
             </h4>
-            
+
           </div>
-         
-            <h4>
-              <p>
 
-                <span class="font-weight-bold" style="color: green;">Satu satunya talas organic dan healthy yang
-                  memiliki berbagai manfaat untuk kesehatan tubuh</span>
+          <h4>
+            <p>
 
-              </p>
-            </h4>
+              <span class="font-weight-bold" style="color: green;">Satu satunya talas organic dan healthy yang
+                memiliki berbagai manfaat untuk kesehatan tubuh</span>
+
+            </p>
+          </h4>
 
           <div class="row">
             <div class="d-flex">
@@ -473,7 +498,7 @@
               </div>
               <div class="p-1 mt-1">
                 <h6>
-                  Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                  Mengontrol Gula Darah
                 </h6>
               </div>
             </div>
@@ -486,7 +511,8 @@
               </div>
               <div class="p-1 mt-1">
                 <h6>
-                  Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                  Mengurangi Resiko Penyakit Jantung
+
                 </h6>
               </div>
             </div>
@@ -498,7 +524,8 @@
               </div>
               <div class="p-1 mt-1">
                 <h6>
-                  Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                  Menyehatkan Usus
+
                 </h6>
               </div>
             </div>
@@ -510,7 +537,7 @@
               </div>
               <div class="p-1 mt-1">
                 <h6>
-                  Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                  Membantu Menurunkan Berat Badan
                 </h6>
               </div>
             </div>
@@ -522,7 +549,8 @@
               </div>
               <div class="p-1 mt-1">
                 <h6>
-                  Sering merasa lelah padahal tidak melakukan aktivitas fisik?
+                  Menjaga Kesehatan Otot
+
                 </h6>
               </div>
             </div>
