@@ -36,22 +36,37 @@
       width: 100%;
       overflow-x: hidden;
     }
-    .news .news-item {
-      background: green;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-      padding: 20px;
-      transition: all 0.3s;
-      text-align: center;
+
+    .news-item img {
+      width: 100%;
+      height: auto;
+      /* Menjaga rasio aspek gambar */
+      max-height: 200px;
+      /* Atur tinggi maksimum sesuai keinginan */
+      object-fit: cover;
       border-radius: 10px;
+      /* Agar gambar terpotong dengan rapi jika melebihi ukuran container */
     }
 
-    .news .news-item img {
-      max-width: 100%;
-      max-height: 100%;
-      border-radius: 10px;
-      display: block;
-      margin: 0;
+    .news-item {
+      border-radius:10px;
+      background-color: green;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      /* Untuk memastikan gambar tidak keluar dari container */
+      margin-bottom: 10px;
+      /* Menambahkan margin bawah untuk memberikan ruang antar item */
     }
+
+    .col-lg-4,
+    .col-md-4 {
+      padding: 10px;
+      /* Menambahkan padding untuk memberikan ruang antar kolom */
+    }
+
 
     .news .news-item .title {
       font-size: 18px;
@@ -77,16 +92,13 @@
 
     .card {
       border-radius: 10px;
-      /* Membuat ujung card menjadi lebih bulat */
       overflow: hidden;
-      /* Menyembunyikan konten yang melebihi batas card */
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       border: 1.5px solid green;
       background-color: white;
       color: green;
       font-weight: bold;
       padding: 10px;
-      /* Menambahkan bayangan lembut */
     }
 
 
@@ -100,14 +112,11 @@
       font-weight: bold;
       padding: 10px;
       transition: background-color 0.3s;
-      /* Efek transisi untuk smooth hover */
     }
 
     .btn-custom:hover {
       background-color: green;
-      /* Mengubah warna latar belakang saat dihover */
       color: white;
-      /* Mengubah warna teks saat dihover */
     }
 
     h6 {
@@ -183,7 +192,7 @@
         </div>
         <div class="col-lg-6 rounded" style="margin-top: -100px;">
           <center>
-            <img src="{{url('public/icon')}}/3.png" alt="" width="120%" height="100%">
+            <img src="{{url('public/icon')}}/3.png" alt="" width="120%" height="100%" data-aos="fade-up">
           </center>
         </div>
       </div>
@@ -196,7 +205,7 @@
       <div class="row s">
         <div class="col-lg-6 d-flex flex-column justify-contents-center">
           <center>
-            <img src="{{url('public/icon')}}/2.png" alt="" width="70%" height="100%">
+            <img src="{{url('public/icon')}}/2.png" alt="" width="70%" height="100%" data-aos="fade-up">
           </center>
         </div>
         <div class="col-lg-6 rounded">
@@ -297,7 +306,7 @@
         <div class="row s">
           <div class="col-lg-4 col-md-4 mb-2">
             <div class="news-item">
-              <img src="{{url('public/icon')}}/7.png" class="img-fluid" alt="">
+              <img src="{{url('public/icon')}}/7.png" class="img-fluid" alt="" data-aos="fade-up">
             </div>
             <h6 class="title" style="color: green;">
               Bukan Hanya Terjadi pada Orang Tua
@@ -309,8 +318,8 @@
             </p>
           </div>
           <div class="col-lg-4 col-md-4 mb-2">
-            <div class="news-item">
-              <img src="{{url('public/icon')}}/6.png" class="img-fluid" alt="">
+              <div class="news-item">
+                <img src="{{url('public/icon')}}/6.png" class="img-fluid" alt="" data-aos="fade-up">
             </div>
             <h6 class="title" style="color: green;">
               Diabetes Tipe 1 Bukan Disebabkan oleh Pola Makan atau Gaya Hidup
@@ -323,9 +332,8 @@
             </p>
           </div>
           <div class="col-lg-4 col-md-4 mb-2">
-            <div class="news-item">
-              <img src="{{url('public/icon')}}/8.png" class="img-fluid" alt="">
-
+              <div class="news-item">
+                <img src="{{url('public/icon')}}/8.png" class="img-fluid" alt="" data-aos="fade-up">
             </div>
             <h6 class="title" style="color: green;"> Memengaruhi Berbagai Organ Tubuh</h6>
 
@@ -444,7 +452,7 @@
 
         <div class="col-lg-6 rounded">
           <center>
-            <img src="{{url('public/icon')}}/4.png" alt="" width="70%" height="100%">
+            <img src="{{url('public/icon')}}/4.png" alt="" width="70%" height="100%" data-aos="fade-up">
 
           </center>
         </div>
@@ -453,7 +461,7 @@
     </div>
   </section>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" style="background-color: green;" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="{{url('public/landingpage')}}/assets/vendor/aos/aos.js"></script>
