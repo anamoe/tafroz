@@ -37,6 +37,10 @@
       overflow-x: hidden;
     }
 
+    .card-container img {
+      margin-right: 20px;
+    }
+
     .news-item img {
       width: 100%;
       height: auto;
@@ -49,7 +53,7 @@
     }
 
     .news-item {
-      border-radius:10px;
+      border-radius: 10px;
       background-color: green;
       padding: 10px;
       display: flex;
@@ -127,6 +131,67 @@
       padding-left: 30px;
       padding-right: 30px;
       padding-top: 30px;
+    }
+
+    .card-custom {
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      /* height: 50px; */
+    }
+
+    .card-custom .icon {
+      margin-left: 5px;
+    }
+
+    .card-custom.active .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content {
+      display: none;
+      /* position: absolute; */
+      background-color: white;
+      width: 100%;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      padding: 15px;
+      /* Sesuaikan padding dengan kebutuhan */
+      border-radius: 10px;
+    }
+
+    .dropdown-content p {
+      color: green;
+      margin: 0;
+      /* Hapus margin default agar tidak ada spasi di sekitar teks */
+    }
+
+    .city-list {
+      margin-top: 10px;
+      padding-left: 20px;
+      display: none;
+    }
+
+    .city-item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .store-item {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .city-item:hover {
+      background-color: #f0f0f0;
     }
 
     @media (max-width: 600px) {
@@ -318,8 +383,8 @@
             </p>
           </div>
           <div class="col-lg-4 col-md-4 mb-2">
-              <div class="news-item">
-                <img src="{{url('public/icon')}}/6.png" class="img-fluid" alt="" data-aos="fade-up">
+            <div class="news-item">
+              <img src="{{url('public/icon')}}/6.png" class="img-fluid" alt="" data-aos="fade-up">
             </div>
             <h6 class="title" style="color: green;">
               Diabetes Tipe 1 Bukan Disebabkan oleh Pola Makan atau Gaya Hidup
@@ -332,8 +397,8 @@
             </p>
           </div>
           <div class="col-lg-4 col-md-4 mb-2">
-              <div class="news-item">
-                <img src="{{url('public/icon')}}/8.png" class="img-fluid" alt="" data-aos="fade-up">
+            <div class="news-item">
+              <img src="{{url('public/icon')}}/8.png" class="img-fluid" alt="" data-aos="fade-up">
             </div>
             <h6 class="title" style="color: green;"> Memengaruhi Berbagai Organ Tubuh</h6>
 
@@ -450,6 +515,7 @@
 
         </div>
 
+
         <div class="col-lg-6 rounded">
           <center>
             <img src="{{url('public/icon')}}/4.png" alt="" width="70%" height="100%" data-aos="fade-up">
@@ -459,6 +525,50 @@
       </div>
 
     </div>
+  </section>
+
+
+  <section class="section-jingga text-center py-5" style="background-color: green;">
+    <h3 style="font-weight:bold; color:greenyellow">BELI DI SINI</h3>
+    <div class="container mt-5">
+      <div class="card-container">
+        <img src="{{url('public/icon/Group 7.png')}}" alt="WhatsApp" height="60px" width="150px">
+        <img src="{{url('public/icon/9.png')}}" alt="WhatsApp" height="60px" width="150px">
+        <img src="{{url('public/icon/10.png')}}" alt="WhatsApp" height="60px" width="150px">
+        <img src="{{url('public/icon/Group 8.png')}}" alt="WhatsApp" height="60px" width="150px">
+      </div>
+    </div>
+    <div class="class mt-5" style="color: white;">
+      <h5>Dapatkan Ongkir Murah atau COD Di distributor</h5>
+      <h5>Terdekat Di kota Anda</h5>
+    </div>
+    <div class="class mt-5" style="color: white;">
+      <h5>Cari distributor Tafroz dengan alamat</h5>
+      <h5>terdekat</h5>
+    </div>
+    <div class="class mt-5" style="color: white;">
+      <h5>Klik "BELI DISINI"</h5>
+    </div>
+
+    @foreach($provinsi as $v)
+    <div class="container mt-1 mx-auto" style="background-color: green;width:80%">
+      <div class="card-custom rounded" id="dropdown{{$loop->index}}" style="background-color: white;">
+        <div class="d-flex justify-content-between align-items-center">
+          <span style="color: green;font-weight:bold">{{$v['name']}}</span>
+          <!-- <button class="btn btn-link text-success" onclick="toggleDropdown('card1')">
+            <i class="fas fa-caret-down icon"></i>
+          </button> -->
+          <button class="btn btn-link text-success" onclick="fetchCities({{ $v['id'] }}, 'dropdown{{$loop->index}}')">
+            <i class="fas fa-caret-down icon"></i>
+          </button>
+        </div>
+        <div id="cityList{{$loop->index}}" class="city-list" style="display: none;"></div> <!-- Unique id for city list -->
+      </div>
+      <!-- <div id="storeList{{$loop->index}}"></div> -->
+
+    </div>
+    @endforeach
+
   </section>
 
   <a href="#" style="background-color: green;" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -477,8 +587,136 @@
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <script>
+    function fetchCities(provinceId, dropdownId) {
+      console.log('Fetching cities for province ID:', provinceId);
+      $.ajax({
+        url: 'http://localhost/tafroz/api/get-cities',
+        method: 'POST',
+        data: {
+          province_id: provinceId
+        },
+        success: function(response) {
+          console.log('Response received:', response);
+          const cities = response;
+          const dropdown = document.getElementById(dropdownId);
+
+          if (dropdown) {
+            dropdown.innerHTML = ''; // Kosongkan konten dropdown sebelum menambahkan data baru
+
+            if (cities.length > 0) {
+              cities.forEach(function(city) {
 
 
+                const cityDiv = document.createElement('div');
+                cityDiv.classList.add('city-item');
+                cityDiv.style.padding = '10px';
+                cityDiv.style.borderBottom = '1px solid #ccc';
+                cityDiv.style.display = 'flex';
+                cityDiv.style.justifyContent = 'space-between';
+                cityDiv.style.alignItems = 'center';
+
+                const cityName = document.createElement('span');
+                cityName.textContent = city.name;
+                cityName.style.color = 'green';
+                cityDiv.appendChild(cityName);
+
+                const closeButton = document.createElement('button');
+                closeButton.textContent = 'X';
+                closeButton.style.backgroundColor = 'transparent';
+                closeButton.style.border = 'none';
+                closeButton.style.color = 'red';
+                closeButton.style.cursor = 'pointer';
+                closeButton.onclick = function() {
+                  dropdown.style.display = 'none';
+                };
+                cityDiv.appendChild(closeButton);
+
+                cityDiv.onclick = function() {
+                  console.log('Kota diklik:', city.name);
+                  fetchStores(city.id, dropdownId);
+                };
+
+                dropdown.appendChild(cityDiv);
+              });
+            } else {
+              dropdown.innerHTML = '<p style="color: green;">Tidak ada kota tersedia.</p>';
+            }
+
+            toggleDropdown(dropdownId); // Tampilkan dropdown setelah data diterima
+          } else {
+            console.error('Dropdown element with ID ' + dropdownId + ' not found.');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching cities:', error);
+        }
+      });
+    }
+
+    function fetchStores(cityId, storeListId) {
+      console.log('Fetching stores for city ID:', cityId);
+      $.ajax({
+        url: 'http://localhost/tafroz/api/get-toko',
+        method: 'POST',
+        data: {
+          kota_id: cityId
+        },
+        success: function(response) {
+          console.log('Stores response received:', response);
+          const stores = response;
+          const storeList = document.getElementById(storeListId); // Use unique store list ID
+
+          if (storeList) {
+            storeList.innerHTML = ''; // Clear previous content
+
+            if (stores.length > 0) {
+              stores.forEach(function(store) {
+                const storeDiv = document.createElement('div');
+                storeDiv.classList.add('store-item');
+                storeDiv.style.padding = '10px';
+                storeDiv.style.borderBottom = '1px solid #ccc';
+                storeDiv.style.display = 'flex';
+                storeDiv.style.justifyContent = 'space-between';
+                storeDiv.style.alignItems = 'center';
+
+                const storeName = document.createElement('span');
+                storeName.textContent = store.nama_lengkap;
+                storeName.style.color = 'green';
+                storeDiv.appendChild(storeName);
+
+                storeList.appendChild(storeDiv);
+              });
+            } else {
+              storeList.innerHTML = '<p style="color: green;">Tidak ada toko tersedia.</p>';
+            }
+          } else {
+            console.error('Store list element with ID ' + storeListId + ' not found.');
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error('Error fetching stores:', error);
+        }
+      });
+    }
+
+
+    function toggleDropdown(dropdownId) {
+      var dropdown = document.getElementById(dropdownId);
+      if (dropdown) {
+        if (dropdown.style.display === "none" || dropdown.style.display === "") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+        console.log('Toggled dropdown for card:', dropdownId);
+      } else {
+        console.error('Dropdown element with ID ' + dropdownId + ' not found.');
+      }
+    }
+  </script>
 </body>
 
 </body>
