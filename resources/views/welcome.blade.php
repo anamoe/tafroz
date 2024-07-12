@@ -698,7 +698,8 @@
 
   // Fungsi untuk mengambil kota berdasarkan ID provinsi
   async function fetchCities(provinceId) {
-    const url = `http://localhost/tafroz/get-cities?province_id=${provinceId}`;
+    // const url = `http://localhost/tafroz/get-cities?province_id=${provinceId}`;
+    const url = `https://tafroz.com/get-cities?province_id=${provinceId}`;
     console.log('Fetching cities for province:', provinceId);
 
     try {
@@ -732,7 +733,9 @@
 
   // Fungsi untuk mengambil distributor berdasarkan ID kota
   async function fetchDistributors(kotaId, parentDiv) {
-    const url = `http://localhost/tafroz/get-distributors-by-city?kota_id=${kotaId}`;
+    // const url = `http://localhost/tafroz/get-distributors-by-city?kota_id=${kotaId}`;
+    const url = `https://tafroz.com/get-distributors-by-city?kota_id=${kotaId}`;
+    
     console.log('Fetching distributors for city:', kotaId);
 
     try {
