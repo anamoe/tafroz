@@ -152,4 +152,16 @@ class DistributorController extends Controller
     {
         //
     }
+
+    public function showByCity(Request $request)
+    {
+        // Ambil kota_id dari request
+        $kotaId = $request->input('kota_id');
+
+        // Query untuk mengambil data distributor berdasarkan kota_id
+        $distributors = DataDistributor::where('kota_id', $kotaId)->get();
+
+        // Kirim data ke view atau format lainnya (API response misalnya)
+        return response()->json($distributors);
+    }
 }

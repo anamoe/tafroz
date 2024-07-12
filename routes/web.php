@@ -32,3 +32,9 @@ Route::post('password-baru/{token_reset}', [AuthController::class, 'password_bar
 
 Route::get('provinsi',[DistributorController::class,'fetchDataProvinsi']);
 Route::resource('data-distributor',DistributorController::class);
+
+Route::get('/get-cities', [DistributorController::class, 'getCities'])->name('get-cities');
+Route::get('/get-distributors-by-city', [DistributorController::class, 'showByCity'])->name('get-distributors-by-city');
+Route::get('provinsi',[DistributorController::class,'fetchDataProvinsi']);
+Route::resource('data-distributor',DistributorController::class);
+Route::get('/search', [DistributorController::class, 'search'])->name('search');
