@@ -213,7 +213,8 @@
       height: 35px;
       padding: 0;
     }
-        /* Tambahkan style ini ke file CSS Anda */
+
+    /* Tambahkan style ini ke file CSS Anda */
     .distributor-card {
       border: 1px solid #ccc;
       border-radius: 10px;
@@ -240,7 +241,6 @@
       background-color: #218838;
       color: #fff;
     }
-
   </style>
 </head>
 
@@ -353,7 +353,7 @@
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1">
-                      <img src="{{ asset('public/icon/Vector (5).png') }} alt="Icon 1" height="25px" width="25px">
+                      <img src="{{ asset('public/icon/Vector (5).png') }} alt=" Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
@@ -589,19 +589,19 @@
       </center>
       <div id="provinceList">
         @foreach ($provinsi as $province)
-            <div class="province-item" data-province-id="{{ $province['id'] }}">
-                {{-- <a href="" class="btn btn-success m-1 w-100">{{ $province['name'] }}</a> --}}
-                <button class="btn mb-1 mt-1 " style="width: 100%;background-color:#F8FFEE;color:#4ECB71;font-weight:bold">{{ $province['name'] }}</button>
-            </div>
-            <div class="cities-list" id="cities-list-{{ $province['id'] }}">
-                <ul class="mb-1 mt-1 w-100">
-                    <!-- Cities will be added dynamically here -->
-                </ul>
-            </div>
+        <div class="province-item" data-province-id="{{ $province['id'] }}">
+          {{-- <a href="" class="btn btn-success m-1 w-100">{{ $province['name'] }}</a> --}}
+          <button class="btn mb-1 mt-1 " style="width: 100%;background-color:#F8FFEE;color:#4ECB71;font-weight:bold">{{ $province['name'] }}</button>
+        </div>
+        <div class="cities-list" id="cities-list-{{ $province['id'] }}">
+          <ul class="mb-1 mt-1 w-100">
+            <!-- Cities will be added dynamically here -->
+          </ul>
+        </div>
         @endforeach
+      </div>
+
     </div>
-    
-  </div>  
 
   </section>
 
@@ -626,145 +626,153 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script>
     $(document).ready(function() {
-  const searchInput = document.getElementById('searchProvinceInput');
+      const searchInput = document.getElementById('searchProvinceInput');
 
-  // Handler for input event on search field
-  searchInput.addEventListener('input', function() {
-    const query = searchInput.value.trim().toLowerCase();
-    const provinceItems = document.getElementsByClassName('province-item');
-    const cityItems = document.getElementsByClassName('city-item');
+      // Handler for input event on search field
+      searchInput.addEventListener('input', function() {
+        const query = searchInput.value.trim().toLowerCase();
+        const provinceItems = document.getElementsByClassName('province-item');
+        const cityItems = document.getElementsByClassName('city-item');
 
-    // Filter provinces based on the query
-    Array.from(provinceItems).forEach(function(provinceItem) {
-      const provinceName = provinceItem.querySelector('button').innerText.toLowerCase();
-      let matchFound = false;
+        // Filter provinces based on the query
+        Array.from(provinceItems).forEach(function(provinceItem) {
+          const provinceName = provinceItem.querySelector('button').innerText.toLowerCase();
+          let matchFound = false;
 
-      // Check if province name matches the query
-      if (provinceName.includes(query)) {
-        provinceItem.style.display = 'block';
-        matchFound = true;
-      } else {
-        // Check if any city in the province matches the query
-        const cities = provinceItem.querySelectorAll('.city-item');
-        cities.forEach(function(cityItem) {
+          // Check if province name matches the query
+          if (provinceName.includes(query)) {
+            provinceItem.style.display = 'block';
+            matchFound = true;
+          } else {
+            // Check if any city in the province matches the query
+            const cities = provinceItem.querySelectorAll('.city-item');
+            cities.forEach(function(cityItem) {
+              const cityName = cityItem.innerText.toLowerCase();
+              if (cityName.includes(query)) {
+                cityItem.style.display = 'block';
+                matchFound = true;
+              } else {
+                cityItem.style.display = 'none';
+              }
+            });
+
+            provinceItem.style.display = matchFound ? 'block' : 'none';
+          }
+        });
+
+        // Filter cities based on the query
+        Array.from(cityItems).forEach(function(cityItem) {
           const cityName = cityItem.innerText.toLowerCase();
           if (cityName.includes(query)) {
             cityItem.style.display = 'block';
-            matchFound = true;
           } else {
             cityItem.style.display = 'none';
           }
         });
-
-        provinceItem.style.display = matchFound ? 'block' : 'none';
-      }
-    });
-
-    // Filter cities based on the query
-    Array.from(cityItems).forEach(function(cityItem) {
-      const cityName = cityItem.innerText.toLowerCase();
-      if (cityName.includes(query)) {
-        cityItem.style.display = 'block';
-      } else {
-        cityItem.style.display = 'none';
-      }
-    });
-  });
-
-  // Handler untuk klik pada provinsi
-  $(document).on('click', '.province-item', function() {
-    var provinceId = $(this).data('province-id');
-    console.log('Province clicked:', provinceId);
-    fetchCities(provinceId);
-
-    // Menyembunyikan semua kota kecuali yang terkait dengan provinsi yang diklik
-    $('.cities-list').not($(this).next('.cities-list')).hide();
-
-    // Toggle (menyembunyikan/menampilkan) kota dari provinsi yang dipilih
-    $(this).next('.cities-list').toggle();
-  });
-
-  // Handler untuk klik pada kota
-  $(document).on('click', '.city-item', function() {
-    var kotaId = $(this).data('kota-id');
-    console.log('City clicked:', kotaId);
-
-    // Menyembunyikan semua distributor cards kecuali yang terkait dengan kota yang diklik
-    $('.distributor-cards').not($(this).next('.distributor-cards')).hide();
-    // Toggle (menyembunyikan/menampilkan) distributor cards dari kota yang dipilih
-    $(this).next('.distributor-cards').toggle();
-    fetchDistributors(kotaId, $(this));
-  });
-
-  // Fungsi untuk mengambil kota berdasarkan ID provinsi
-  async function fetchCities(provinceId) {
-    // const url = `http://localhost/tafroz/get-cities?province_id=${provinceId}`;
-    const url = `https://tafroz.com/get-cities?province_id=${provinceId}`;
-    console.log('Fetching cities for province:', provinceId);
-
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Failed to fetch cities');
-      }
-      const cities = await response.json();
-      console.log('Cities fetched:', cities);
-      const citiesUl = document.getElementById('cities-list-' + provinceId).querySelector('ul');
-      citiesUl.innerHTML = ''; // Clear previous cities
-
-      cities.forEach(city => {
-        const li = document.createElement('li');
-        li.textContent = city.name;
-        li.classList.add('city-item');
-        li.setAttribute('data-kota-id', city.id); // Tambahkan data-kota-id
-        li.style.backgroundColor = '#F8FFEE'; // Menambahkan background 
-        li.style.color = '#4ECB71'; // Menambahkan background 
-        li.style.marginBottom = '2px'; // Menambahkan margin bottom 5px
-        li.style.borderRadius = '5px'; // Menambahkan sudut melengkung (rounded)
-        citiesUl.appendChild(li);
       });
 
-    } catch (error) {
-      console.error('Error fetching cities:', error);
-      const citiesUl = document.getElementById('cities-list-' + provinceId).querySelector('ul');
-      citiesUl.innerHTML = '<li>Error fetching cities</li>';
-    }
-  }
+      // Handler untuk klik pada provinsi
+      $(document).on('click', '.province-item', function() {
+        var provinceId = $(this).data('province-id');
+        console.log('Province clicked:', provinceId);
+        fetchCities(provinceId);
 
-  // Fungsi untuk mengambil distributor berdasarkan ID kota
-  async function fetchDistributors(kotaId, parentDiv) {
-    // const url = `http://localhost/tafroz/get-distributors-by-city?kota_id=${kotaId}`;
-    const url = `https://tafroz.com/get-distributors-by-city?kota_id=${kotaId}`;
-    
-    console.log('Fetching distributors for city:', kotaId);
+        // Menyembunyikan semua kota kecuali yang terkait dengan provinsi yang diklik
+        $('.cities-list').not($(this).next('.cities-list')).hide();
 
-    try {
-      const response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Failed to fetch distributors');
+        // Toggle (menyembunyikan/menampilkan) kota dari provinsi yang dipilih
+        $(this).next('.cities-list').toggle();
+      });
+
+      // Handler untuk klik pada kota
+      $(document).on('click', '.city-item', function() {
+        var kotaId = $(this).data('kota-id');
+        console.log('City clicked:', kotaId);
+
+        // Menyembunyikan semua distributor cards kecuali yang terkait dengan kota yang diklik
+        $('.distributor-cards').not($(this).next('.distributor-cards')).hide();
+        // Toggle (menyembunyikan/menampilkan) distributor cards dari kota yang dipilih
+        $(this).next('.distributor-cards').toggle();
+        fetchDistributors(kotaId, $(this));
+      });
+
+      // Fungsi untuk mengambil kota berdasarkan ID provinsi
+      async function fetchCities(provinceId) {
+        // const url = `http://localhost/tafroz/get-cities?province_id=${provinceId}`;
+        // const url = `https://tafroz.com/get-cities?province_id=${provinceId}`;
+        const url = "{{ url('/get-cities') }}?province_id=" + provinceId;
+
+        console.log('Fetching cities for province:', provinceId);
+
+
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error('Failed to fetch cities');
+          }
+          const cities = await response.json();
+          console.log('Cities fetched:', cities);
+          const citiesUl = document.getElementById('cities-list-' + provinceId).querySelector('ul');
+          citiesUl.innerHTML = ''; // Clear previous cities
+
+          cities.forEach(city => {
+            const li = document.createElement('li');
+            li.textContent = city.name;
+            li.classList.add('city-item');
+            li.setAttribute('data-kota-id', city.id); // Tambahkan data-kota-id
+            li.style.backgroundColor = '#F8FFEE'; // Menambahkan background 
+            li.style.color = '#4ECB71'; // Menambahkan background 
+            li.style.marginBottom = '2px'; // Menambahkan margin bottom 5px
+            li.style.borderRadius = '5px'; // Menambahkan sudut melengkung (rounded)
+            citiesUl.appendChild(li);
+          });
+
+        } catch (error) {
+          console.error('Error fetching cities:', error);
+          const citiesUl = document.getElementById('cities-list-' + provinceId).querySelector('ul');
+          citiesUl.innerHTML = '<li>Error fetching cities</li>';
+        }
       }
-      const distributors = await response.json();
-      console.log('Distributors fetched:', distributors);
-      displayDistributors(distributors, parentDiv);
 
-    } catch (error) {
-      console.error('Error fetching distributors:', error);
-      // Handle error
-    }
-  }
+      // Fungsi untuk mengambil distributor berdasarkan ID kota
+      async function fetchDistributors(kotaId, parentDiv) {
+        // const url = `http://localhost/tafroz/get-distributors-by-city?kota_id=${kotaId}`;
+        // const url = `https://tafroz.com/get-distributors-by-city?kota_id=${kotaId}`;
+        const url = "{{ url('/get-distributors-by-city') }}?kota_id=" + kotaId;
 
-  // Fungsi untuk menampilkan distributor
-  function displayDistributors(distributors, parentDiv) {
-    // Clear previous distributor cards
-    const distributorCards = parentDiv.next('.distributor-cards');
-    if (distributorCards.length === 0) {
-      parentDiv.after('<div class="distributor-cards row"></div>');
-    }
-    parentDiv.next('.distributor-cards').empty();
+        console.log('Fetching distributors for city:', kotaId);
 
-    // Append new distributor cards
-    distributors.forEach(distributor => {
-      const cardHtml = `
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error('Failed to fetch distributors');
+          }
+          const distributors = await response.json();
+          console.log('Distributors fetched:', distributors);
+          displayDistributors(distributors, parentDiv);
+
+        } catch (error) {
+          console.error('Error fetching distributors:', error);
+          // Handle error
+        }
+      }
+
+      // Fungsi untuk menampilkan distributor
+      function displayDistributors(distributors, parentDiv) {
+
+        // Clear previous distributor cards
+        const distributorCards = parentDiv.next('.distributor-cards');
+        if (distributorCards.length === 0) {
+          parentDiv.after('<div class="distributor-cards row"></div>');
+        }
+        parentDiv.next('.distributor-cards').empty();
+
+        // Append new distributor cards
+        distributors.forEach(distributor => {
+          const waNumber = distributor.no_wa;
+
+          const waUrl = `https://wa.me/${waNumber}?text=Halo,%20saya%20tertarik%20untuk%20memesan%20produk%20Anda`;
+          const cardHtml = `
       <div class="col-md-4">
         <div class="card distributor-card mb-2 mt-2 me-1 ms-1">
           <div class="card-body text-start">
@@ -774,16 +782,17 @@
             </div>
             <small class="mb-3"> ${distributor.no_wa}</small>
             <br>
-            <button class="btn btn-success mt-3">BELI DISINI</button>
+          
+             <a href="${waUrl}" class="btn btn-success mt-3" target="_blank">BELI DISINI</a>
           </div>
         </div>
       </div>
       `;
-      parentDiv.next('.distributor-cards').append(cardHtml);
+          parentDiv.next('.distributor-cards').append(cardHtml);
+        });
+      }
     });
-  }
-});
-
   </script>
 </body>
+
 </html>
