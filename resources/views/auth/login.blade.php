@@ -18,7 +18,7 @@
    
     <style>
         .input-border-green .form-control {
-            border-color: green;
+            border-color: #4ECB71;
         }
         .card {
             border: 1px solid #ddd;
@@ -31,7 +31,7 @@
 </head>
 
 <!-- <body class="background_login" style="background-image: url('{{ asset('public/FOTO/hijau.jpg') }}');"> -->
-<body class="background_login" style="background:green ;">
+<body class="background_login" style="background:#4ECB71 ;">
 
     <div class="header">
         <div class="container">
@@ -51,11 +51,10 @@
                 <div class="card shadow-lg">
                     <div class="card-body p-4">
                         <center>
-                        <img src="{{url('public/logo')}}/LOGO YAFO aja.png" class="logo" alt="" height="100px" width="60px">
+                        <img src="{{url('public/icon')}}/logo.png" class="logo" alt="" height="100px" width="60px">
 
                         </center>
-                        <h1 class="fs-4 text-center fw-bold mb-4" style="color: green;">YAFO AGRO</h1>
-                        <h4 class="fs-6 text-center fw-bold mt-1" style="color: green;">Pertanian Dalam Genggaman</h4>
+                       
                         @if(session()->has('error'))
                         <div class="alert alert-danger" role="alert" id="notif">
 
@@ -81,8 +80,8 @@
                         <form action="{{url('login-post')}}" method="POST" aria-label="abdul" data-id="abdul" class="needs-validation" novalidate="" autocomplete="off">
                             @csrf
                             <div class="mb-3">
-                                <label class="mb-2  fw-bold " style="color: green;" for="email">Nama Pengguna</label>
-                                <div class="input-group input-group-join mb-3 input-border-green">
+                                <label class="mb-2  fw-bold " style="color: #4ECB71;" for="email">Nama Pengguna</label>
+                                <div class="input-group input-group-join mb-3 input-border-#4ECB71">
                                     <input type="text" class="form-control" id="nama_pengguna" placeholder="Masukkan Username" name="username" id="validationCustom01" required autofocus>
                                     <span class="input-group-text rounded-end">&nbsp<i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp</span>
                                     <div class="invalid-feedback">
@@ -95,9 +94,9 @@
 
                             <div class="mb-3">
                                 <div class="mb-2 w-100">
-                                    <label class=" fw-bold" style="color: green;" for="password">Password</label>
+                                    <label class=" fw-bold" style="color: #4ECB71;" for="password">Password</label>
                                 </div>
-                                <div class="input-group input-group-join mb-3 input-border-green">
+                                <div class="input-group input-group-join mb-3 input-border-#4ECB71">
 
                                     <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password" required>
 
@@ -113,7 +112,7 @@
                             </div>
 
                             <div class="mt-4 d-grid gap-2 ">
-                                <button type="submit" class="btn btn-success" style="font-weight:bold;background-color: green;color:#FDBB26">LOG IN</button>
+                                <button type="submit" class="btn btn-success" style="font-weight:bold;background-color: #4ECB71;color:#F8FFEE">LOG IN</button>
                             </div>
                         </form>
                       

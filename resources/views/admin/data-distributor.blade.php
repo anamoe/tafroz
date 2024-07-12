@@ -28,8 +28,8 @@
                         <td>{{$item->alamat_lengkap}}</td>
                         <td>{{$item->no_wa}}</td>
                         <td>
-                            <a href="{{url('admin/data-distributor/'.$item->id.'/edit')}}" class="btn btn-sm btn-primary">Edit</a>
-                            <a href="{{url('admin/data-distributor/'.$item->id.'/delete')}}" class="btn btn-sm btn-danger">Delete</a>
+                            <a href="{{url('data-distributor/'.$item->id.'/edit')}}" class="btn btn-sm btn-primary">Edit</a>
+                            <a href="{{url('data-distributor/'.$item->id.'/delete')}}" class="btn btn-sm btn-danger">Delete</a>
                         </td>
                     </tr>
                     @empty

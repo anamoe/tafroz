@@ -19,7 +19,7 @@
 
     <style>
         .input-border-green .form-control {
-            border-color: green;
+            border-color: #4ECB71;
         }
 
         .card {
@@ -32,7 +32,7 @@
     </style>
 </head>
 
-<body class="background_login" style="background:green ;">
+<body class="background_login" style="background:#4ECB71 ;">
 
     <div class="header">
         <div class="container">
@@ -52,11 +52,11 @@
                 <div class="card shadow-lg">
                     <div class="card-body p-4">
                         <center>
-                            <img src="{{url('public/logo')}}/LOGO YAFO aja.png" class="logo" alt="" height="100px" width="60px">
+                        <img src="{{url('public/icon')}}/logo.png" class="logo" alt="" height="100px" width="60px">
+
 
                         </center>
-                        <h1 class="fs-4 text-center fw-bold mb-4" style="color: green;">YAFO AGRO</h1>
-                        <h4 class="fs-6 text-center fw-bold mt-1" style="color: green;">Pertanian Dalam Genggaman</h4>
+  
                         @if(session()->has('error'))
                         <div class="alert alert-danger" role="alert" id="notif">
 
@@ -71,7 +71,7 @@
 
                             <center>
                                 <h6>
-                                    <p style="color: green;" class="login-box-msg">Ubah Kata Sandi</p>
+                                    <p style="color: #4ECB71;" class="login-box-msg">Ubah Kata Sandi</p>
                                 </h6>
                             </center>
 
@@ -80,13 +80,13 @@
 
                                 <div class="mb-3">
 
-                                    <label for="username" style="color: green;">Masukkan nama pengguna</label>
-                                    <div class="input-group mb-3 input-border-green">
+                                    <label for="username" style="color: #4ECB71;">Masukkan nama pengguna</label>
+                                    <div class="input-group mb-3 input-border-#4ECB71">
                                         <input type="text" class="form-control" name="username" value="{{ old('username')}}" id="username">
                                     </div>
                                 </div>
                                 <div class="mt-4 d-grid gap-2 ">
-                                    <button type="submit" style="color: #FDBB26;width: 100%;background-color:green; font-weight:bold;" class="btn btn-success btn-block">Reset</button>
+                                    <button type="submit" style="color: #F8FFEE;width: 100%;background-color:#4ECB71; font-weight:bold;" class="btn btn-success btn-block">Reset</button>
                                 </div>
 
                                 <br>

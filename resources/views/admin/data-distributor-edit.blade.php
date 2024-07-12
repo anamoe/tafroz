@@ -3,130 +3,78 @@
 
 <div class="card">
     <div class="card-header bg-primary">
-        <h6 class="mb-0 text-white">Edit Profil Mitra - {{$data->name}}
-            <a href="{{url('admin/profilmitra')}}" class="btn btn-sm float-end btn-light">Kembali</a>
+        <h6 class="mb-0 text-white">Edit
+            <a href="{{url('data-distributor')}}" class="btn btn-sm float-end btn-light">Kembali</a>
         </h6>
     </div>
 
     <div class="card">
         <div class="card-body">
-            <form action="{{url('admin/profilmitra/'.$data->id)}}" method="post" enctype="multipart/form-data">
+            <form action="{{url('data-distributor',$data->id)}}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('patch')
                 <div class="row">
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="form-label">Nama lengkap</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$data->name}}">
+                            <label for="" class="form-label">Nama Lengkap</label>
+                            <input type="text" class="form-control @error('nama_lengkap') is-invalid @enderror" name="nama_lengkap" value="{{$data->nama_lengkap}}">
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="form-label">Username</label>
-                            <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{$data->username}}">
+                            <label for="" class="form-label">Nomor WA</label>
+                            <input type="text" class="form-control @error('no_wa') is-invalid @enderror" name="no_wa" value="{{$data->no_wa}}">
+
                         </div>
                     </div>
+
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="form-group">
-                            <label for="" class="form-label">Ahli Waris</label>
-                            <input type="text" class="form-control @error('ahli_waris') is-invalid @enderror" name="ahli_waris" value="{{$data->ahli_waris}}">
+                            <label for="" class="form-label">Alamat Lengkap</label>
+                            <textarea type="text" class="form-control @error('alamat_lengkap') 
+                            is-invalid @enderror" name="alamat_lengkap"> {{$data->alamat_lengkap}}</textarea>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Password</label>
-                            <input type="password" class="form-control" name="password">
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="row">
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="" class="form-label">NIK</label>
-                            <input type="number" class="form-control @error('nik') is-invalid @enderror" name="nik" value="{{$data->nik}}">
+                            <label for="provinsi" class="form-label">Provinsi</label>
+                            <!-- <select name="provinsi_id" id="province" class="form-control">
+                                <option value="">Pilih Provinsi</option>
+                                @foreach($provinsis as $v)
+                                <option value="{{ $v['id']}}">{{ $v['name'] }}</option>
+                                @endforeach
+                            </select> -->
+                            <select name="provinsi_id" id="province" class="form-control">
+                                <option value="">Pilih Provinsi</option>
+                                @foreach($provinsis as $v)
+                                <option value="{{ $v['id'] }}" @if($v['id']==$data->provinsi_id) selected @endif>{{ $v['name'] }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Alamat</label>
-                            <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" value="{{$data->alamat}}">
-                        </div>
-                    </div>
+    <div class="form-group">
+        <label for="city" class="form-label">Kota</label>
+        <select name="kota_id" id="city" class="form-control">
+            <option value="">Pilih Kota</option>
+            @foreach($kotas as $city)
+                <option value="{{ $city['id'] }}" @if($city['id'] == $data->kota_id) selected @endif>{{ $city['name'] }}</option>
+            @endforeach
+        </select>
+    </div>
+</div>
+
                 </div>
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Tempat Lahir</label>
-                            <input type="text" class="form-control @error('tempat_lahir') is-invalid @enderror" name="tempat_lahir" value="{{$data->tempat_lahir}}">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Tanggal Lahir</label>
-                            <input type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" value="{{$data->tgl_lahir}}">
-                        </div>
-                    </div>
-                  
-                </div>
-                <div class="row">
-                <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="" class="form-label">email</label>
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$data->email}}">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="" class="form-label">Kode Pos</label>
-                            <input type="number" class="form-control @error('kode_pos') is-invalid @enderror" name="kode_pos" value="{{$data->kode_pos}}">
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label for="" class="form-label">No. HP</label>
-                            <input type="number" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp" value="{{$data->no_hp}}">
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div class="row">
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Nama Rekening</label>
-                            <input type="text" class="form-control @error('nama_rekening') is-invalid @enderror" name="nama_rekening" value="{{$data->nama_rekening}}">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="" class="form-label">Nomor Rekening</label>
-                            <input type="number" class="form-control @error('no_rekening') is-invalid @enderror" name="no_rekening" value="{{$data->no_rekening}}">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                <center>
-                        <img src="{{url('public/ktp/'.$data->foto_ktp)}}" alt="" style="width: 50%;">
-
-                    </center>
-                    <div class="form-group">
-                        <label for="" class="form-label">Foto KTP</label>
-                        <input type="file" class="form-control" name="foto_ktp" accept="image/*">
-                    </div>
-                </div>
-
-
 
                 <button type="submit" class="btn btn-primary float-end mt-3">Update</button>
 
@@ -137,3 +85,49 @@
 </div>
 
 @endsection
+@push('js')
+<script type="text/javascript">
+    $(document).ready(function(){
+        // Fungsi untuk mengisi kota berdasarkan provinsi yang dipilih
+        function populateCities(province_id, selected_city_id) {
+            $.ajax({
+                url: '{{ url("api/get-cities") }}',
+                type: 'POST',
+                data: {
+                    province_id: province_id,
+                    _token: '{{ csrf_token() }}'
+                },
+                dataType: 'json',
+                success: function(data){
+                    $('#city').empty();
+                    $('#city').append('<option value="">Pilih Kota</option>');
+                    $.each(data, function(index, city){
+                        var selected = (city.id == selected_city_id) ? 'selected' : '';
+                        $('#city').append('<option value="'+ city.id +'" '+ selected +'>'+ city.name +'</option>');
+                    });
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        }
+
+        // Ketika halaman dimuat, panggil fungsi populateCities jika provinsi_id sudah terisi
+        var selected_province_id = $('#province').val();
+        var selected_city_id = '{{ $data->kota_id }}'; // Ambil ID kota dari data distribusi
+        if (selected_province_id) {
+            populateCities(selected_province_id, selected_city_id);
+        }
+
+        // Event listener untuk perubahan pada select provinsi
+        $('#province').on('change', function(){
+            var province_id = $(this).val();
+            if(province_id){
+                populateCities(province_id, null); // Kosongkan selected_city_id jika ingin mengisi dari awal
+            } else {
+                $('#city').empty();
+            }
+        });
+    });
+</script>
+@endpush

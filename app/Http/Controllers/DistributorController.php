@@ -18,7 +18,7 @@ class DistributorController extends Controller
 
         // Mendapatkan data JSON dalam bentuk array
         $provinsi = $response->json();
-        return view('welcome',compact('provinsi'));
+        return view('welcome', compact('provinsi'));
     }
     public function fetchDataProvinsi()
     {
@@ -48,15 +48,15 @@ class DistributorController extends Controller
             $regencies = []; // or handle error response
         }
 
-      
+
 
         return response()->json($regencies);
     }
 
-    
+
     public function getToko(Request $request)
     {
-        $data =DataDistributor::where('kota_id',$request->kota_id)->get();
+        $data = DataDistributor::where('kota_id', $request->kota_id)->get();
 
         return response()->json($data);
     }
@@ -105,7 +105,7 @@ class DistributorController extends Controller
      */
     public function store(Request $request)
     {
-      
+
 
         $data = $request->validate([
 
@@ -115,10 +115,9 @@ class DistributorController extends Controller
 
         ]);
 
-       DataDistributor::create($data);
+        DataDistributor::create($data);
         return redirect('data-distributor')
             ->with('success', ' Berhasil Ditambahkan');
-    
     }
 
     /**
@@ -135,6 +134,40 @@ class DistributorController extends Controller
     public function edit(string $id)
     {
         //
+        $url = 'https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json';
+
+        // Menggunakan HTTP Client untuk mengambil data dari URL
+        $response = Http::get($url);
+
+        // Mendapatkan data JSON dalam bentuk array
+        $provinsi = $response->json();
+        $provinsis = [];
+        foreach ($provinsi as $province) {
+            $provinsis[] = [
+                'id' => $province['id'],
+                'name' => $province['name'],
+            ];
+        }
+
+
+        $data = DataDistributor::where('id', $id)
+            ->first();
+
+            $url2 = "https://www.emsifa.com/api-wilayah-indonesia/api/regencies/{$data->provinsi_id}.json";
+            $response2= Http::get($url2);
+
+            // Mendapatkan data JSON dalam bentuk array
+            $kota = $response2->json();
+            $kotas = [];
+            foreach ($kota as $kotass) {
+                $kotas[] = [
+                    'id' => $kotass['id'],
+                    'name' => $kotass['name'],
+                ];
+            }
+            // return $kotas;
+    
+        return view('admin.data-distributor-edit', compact('data', 'id','provinsis','kotas'));
     }
 
     /**
@@ -143,6 +176,17 @@ class DistributorController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        $data = $request->validate([
+
+            'nama_lengkap' => 'required',
+            'alamat_lengkap' => 'required', 'no_wa' => 'required',
+            'kota_id' => 'required', 'provinsi_id' => 'required',
+
+        ]);
+
+        DataDistributor::findOrFail($id)->update($data);
+        return redirect('data-distributor')
+        ->with('success',' Berhasil DiUpdate');
     }
 
     /**
@@ -151,6 +195,9 @@ class DistributorController extends Controller
     public function destroy(string $id)
     {
         //
+        DataDistributor::destroy($id);
+      
+        return redirect()->back()->with('success',' Berhasil DiHapus');
     }
 
     public function showByCity(Request $request)

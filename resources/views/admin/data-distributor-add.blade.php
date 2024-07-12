@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header bg-primary">
-        <h6 class="mb-0 text-white">Add Profil Mitra
+        <h6 class="mb-0 text-white">Add
             <a href="{{url('data-distributor')}}" class="btn btn-sm float-end btn-light">Kembali</a>
         </h6>
     </div>

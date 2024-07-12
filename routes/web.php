@@ -38,3 +38,4 @@ Route::get('/get-distributors-by-city', [DistributorController::class, 'showByCi
 Route::get('provinsi',[DistributorController::class,'fetchDataProvinsi']);
 Route::resource('data-distributor',DistributorController::class);
 Route::get('/search', [DistributorController::class, 'search'])->name('search');
+Route::get('/data-distributor/{id}/delete', [DistributorController::class, 'destroy'])->name('deete');

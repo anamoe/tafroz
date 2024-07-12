@@ -13,7 +13,7 @@ Edit Profil
     <form action="{{url('profil',$users->id)}}" method="post" enctype="multipart/form-data">
         @csrf
    
-        <div class="card " style="background-color: green">
+        <div class="card " style="background-color:#4ECB71">
         <!-- <div class="text-center mb-3">
                     <img src="{{asset('profil/'.auth()->user()->profil)}}" alt="Profil Image" class="rounded-circle" width="100" height="100">
                     <input type="file" name="foto" accept="image/*">
@@ -23,12 +23,6 @@ Edit Profil
             <div class="col-md-6">
               
 
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-                        <label style="color: white;" class="label" for="name">Nama</label>
-                        <input type="text" class="form-control @error('nama') is-invalid @enderror" value="{{auth()->user()->name}}" name="name" id="nama" placeholder="Nama">
-                    </div>
-                </div>
 
                 <div class="form-group basic">
                     <div class="input-wrapper">
