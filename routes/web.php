@@ -21,8 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[DistributorController::class,'landingpage']);
 
 Route::get('/logout', [AuthController::class, 'logout']);
-Route::get('/profil', [AuthController::class, 'profil']);
-Route::post('/profil/{id}', [AuthController::class, 'profile_update']);
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('login-post', [AuthController::class, 'postlogin']);
 Route::get('lupa-password', [AuthController::class, 'lupa_password']);
@@ -36,6 +35,12 @@ Route::resource('data-distributor',DistributorController::class);
 Route::get('/get-cities', [DistributorController::class, 'getCities'])->name('get-cities');
 Route::get('/get-distributors-by-city', [DistributorController::class, 'showByCity'])->name('get-distributors-by-city');
 Route::get('provinsi',[DistributorController::class,'fetchDataProvinsi']);
+
+Route::middleware(['auth'])->group(function () {
 Route::resource('data-distributor',DistributorController::class);
-Route::get('/search', [DistributorController::class, 'search'])->name('search');
 Route::get('/data-distributor/{id}/delete', [DistributorController::class, 'destroy'])->name('deete');
+Route::get('/profil', [AuthController::class, 'profil']);
+Route::post('/profil/{id}', [AuthController::class, 'profile_update']);
+
+});
+Route::get('/search', [DistributorController::class, 'search'])->name('search');
