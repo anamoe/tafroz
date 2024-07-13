@@ -141,7 +141,7 @@
                                 </script>
                                
                                 <a href="" target="_blank"
-                                    class="footer-link fw-bolder">PT. YAFOAGRO INDONESIA</a>
+                                    class="footer-link fw-bolder">TAFROZ</a>
                             </div>
                             
                         </div>

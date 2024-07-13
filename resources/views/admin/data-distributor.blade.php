@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header bg-primary">
-        <h6 class="mb-0 text-white">Profil Data Distributor
+        <h6 class="mb-0 text-white"> Data Distributor
             <a href="{{url('data-distributor/create')}}" class="btn btn-sm float-end btn-light">Add</a>
         </h6>
     </div>

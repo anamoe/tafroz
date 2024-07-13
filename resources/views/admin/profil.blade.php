@@ -34,7 +34,7 @@ Edit Profil
                 <div class="form-group basic">
                     <div class="input-wrapper">
                         <label  style="color: white;"class="label" for="name">Password</label>
-                        <input type="number" class="form-control @error('password') is-invalid @enderror" value="" name="password" placeholder="Password">
+                        <input type="text" class="form-control @error('password') is-invalid @enderror" value="" name="password" placeholder="Password">
                     </div>
                 </div>
                
