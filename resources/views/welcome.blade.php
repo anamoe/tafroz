@@ -557,7 +557,7 @@
 
 
   <section class="section-jingga text-center py-5" style="background-color: #4ECB71;">
-    <h3 style="font-weight:bold; color:#4ECB71">BELI DI SINI</h3>
+    <h3 style="font-weight:bold; color:#FFF8EE">BELI DI SINI</h3>
     <div class="container mt-5">
       <div class="card-container">
         <img src="{{asset('public/icon/Group 7.png')}}" alt="WhatsApp" height="60px" width="150px">
