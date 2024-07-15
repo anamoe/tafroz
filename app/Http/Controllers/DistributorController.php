@@ -80,6 +80,22 @@ class DistributorController extends Controller
     public function create()
     {
 
+        // $url = 'https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json';
+
+        // // Menggunakan HTTP Client untuk mengambil data dari URL
+        // $response = Http::get($url);
+
+        // // Mendapatkan data JSON dalam bentuk array
+        // $provinsi = $response->json();
+        // $provinsis = [];
+        // foreach ($provinsi as $province) {
+        //     $provinsis[] = [
+        //         'id' => $province['id'],
+        //         'name' => $province['name'],
+        //     ];
+        // }
+        // return $provinsis;
+
         $url = 'https://emsifa.github.io/api-wilayah-indonesia/api/provinces.json';
 
         // Menggunakan HTTP Client untuk mengambil data dari URL
@@ -89,9 +105,15 @@ class DistributorController extends Controller
         $provinsi = $response->json();
         $provinsis = [];
         foreach ($provinsi as $province) {
+            $url2 = "https://www.emsifa.com/api-wilayah-indonesia/api/regencies/{$province['id']}.json";
+            $response = Http::get($url2)->json();
+
+            $kota = [];
+            
             $provinsis[] = [
                 'id' => $province['id'],
                 'name' => $province['name'],
+                'kota' => $response
             ];
         }
         // return $provinsis;

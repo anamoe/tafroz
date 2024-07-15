@@ -17,16 +17,16 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="{{ asset('landingpage/assets/vendor/aos/aos.css') }}" rel="stylesheet">
-  <link href="{{ asset('landingpage/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landingpage/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('landingpage/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landingpage/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('landingpage/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('public/landingpage/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <!-- Template Main CSS File -->
-  <link href="{{asset('landingpage/assets/css/style.css')}}" rel="stylesheet">
+  <link href="{{asset('public/landingpage/assets/css/style.css')}}" rel="stylesheet">
 
   <style>
     body,
@@ -353,7 +353,7 @@
                 <div class="card p-1 mb-1">
                   <div class="d-flex">
                     <div class="ikon p-1">
-                      <img src="{{ asset('public/icon/Vector (5).png') }} alt=" Icon 1" height="25px" width="25px">
+                      <img src="{{ asset('public/icon/Vector (5).png') }}" alt=" Icon 1" height="25px" width="25px">
                     </div>
                     <div class="p-1">
                       <h6>
@@ -590,7 +590,6 @@
       <div id="provinceList">
         @foreach ($provinsi as $province)
         <div class="province-item" data-province-id="{{ $province['id'] }}">
-          {{-- <a href="" class="btn btn-success m-1 w-100">{{ $province['name'] }}</a> --}}
           <button class="btn mb-1 mt-1 " style="width: 100%;background-color:#F8FFEE;color:#4ECB71;font-weight:bold">{{ $province['name'] }}</button>
         </div>
         <div class="cities-list" id="cities-list-{{ $province['id'] }}">
@@ -608,15 +607,15 @@
   <a href="#" style="background-color: #4ECB71;" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset ('landingpage/assets/vendor/aos/aos.js') }}"></script>
-  <script src="{{ asset ('landingpage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-  <script src="{{ asset('landingpage/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-  <script src="{{ asset ('landingpage/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-  <script src="{{ asset ('landingpage/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-  <script src="{{ asset ('landingpage/assets/vendor/php-email-form/validate.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/vendor/aos/aos.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('public/landingpage/assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/vendor/php-email-form/validate.js') }}"></script>
 
   <!-- Template Main JS File -->
-  <script src="{{ asset ('landingpage/assets/js/main.js') }}"></script>
+  <script src="{{ asset ('public/landingpage/assets/js/main.js') }}"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -698,8 +697,7 @@
 
       // Fungsi untuk mengambil kota berdasarkan ID provinsi
       async function fetchCities(provinceId) {
-        // const url = `http://localhost/tafroz/get-cities?province_id=${provinceId}`;
-        // const url = `https://tafroz.com/get-cities?province_id=${provinceId}`;
+
         const url = "{{ url('/get-cities') }}?province_id=" + provinceId;
 
         console.log('Fetching cities for province:', provinceId);
@@ -749,7 +747,15 @@
           }
           const distributors = await response.json();
           console.log('Distributors fetched:', distributors);
-          displayDistributors(distributors, parentDiv);
+          // displayDistributors(distributors, parentDiv);
+
+    if (distributors.length == 0) {
+      alert('Tidak ada toko distribusi di kota tersebut!');
+      // Alternatively, you can display a message in the parentDiv
+      parentDiv.innerHTML = '<p>No distributors available for the selected city.</p>';
+    } else {
+      displayDistributors(distributors, parentDiv);
+    }
 
         } catch (error) {
           console.error('Error fetching distributors:', error);
