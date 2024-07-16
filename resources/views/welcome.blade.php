@@ -560,10 +560,22 @@
     <h3 style="font-weight:bold; color:#FFF8EE">BELI DI SINI</h3>
     <div class="container mt-5">
       <div class="card-container">
-        <img src="{{asset('public/icon/Group 7.png')}}" alt="WhatsApp" height="60px" width="150px">
-        <img src="{{asset('public/icon/9.png')}}" alt="WhatsApp" height="60px" width="150px">
-        <img src="{{asset('public/icon/10.png')}}" alt="WhatsApp" height="60px" width="150px">
-        <img src="{{asset('public/icon/Group 8.png')}}" alt="WhatsApp" height="60px" width="150px">
+        <a href="https://www.tiktok.com/@tafroz.official?_t=8nWgOcfbZWD&_r=1">
+          <img src="{{asset('public/icon/Group 7.png')}}" alt="WhatsApp" height="60px" width="150px">
+
+        </a>
+        <a href="https://tokopedia.link/ChUC9Fs8FKb">
+          <img src="{{asset('public/icon/9.png')}}" alt="WhatsApp" height="60px" width="150px">
+
+        </a>
+        <a href="https://shopee.co.id/tafrozofficial">
+          <img src="{{asset('public/icon/10.png')}}" alt="WhatsApp" height="60px" width="150px">
+
+        </a>
+        <a href="https://www.instagram.com/tafroz_official?igsh=eGRya2JlcGl3ZGYx">
+          <img src="{{asset('public/icon/Group 8.png')}}" alt="WhatsApp" height="60px" width="150px">
+
+        </a>
       </div>
     </div>
     <div class="class mt-5" style="color: #F8FFEE;">
@@ -749,13 +761,13 @@
           console.log('Distributors fetched:', distributors);
           // displayDistributors(distributors, parentDiv);
 
-    if (distributors.length == 0) {
-      alert('Tidak ada toko distribusi di kota tersebut!');
-      // Alternatively, you can display a message in the parentDiv
-      parentDiv.innerHTML = '<p>No distributors available for the selected city.</p>';
-    } else {
-      displayDistributors(distributors, parentDiv);
-    }
+          if (distributors.length == 0) {
+            alert('Tidak ada toko distribusi di kota tersebut!');
+            // Alternatively, you can display a message in the parentDiv
+            parentDiv.innerHTML = '<p>No distributors available for the selected city.</p>';
+          } else {
+            displayDistributors(distributors, parentDiv);
+          }
 
         } catch (error) {
           console.error('Error fetching distributors:', error);
